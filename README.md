@@ -1,2 +1,2 @@
 # SpringBoot-Learning
-SprinBoot 应用开发
+SpringBoot 应用开发

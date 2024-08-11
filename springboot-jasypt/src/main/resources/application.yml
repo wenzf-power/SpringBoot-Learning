@@ -1,0 +1,35 @@
+spring:
+  application:
+    name: springboot-jasypt
+
+#jasypt:
+#  encryptor:
+#    # 盐值
+#    password: 123
+#    # 指定加密方式
+#    algorithm: PBEWithMD5AndDES
+#    iv-generator-classname: org.jasypt.iv.NoIvGenerator
+#    property:
+#      # 标识为加密属性的前缀
+#      prefix: ENC(
+#      # 标识为加密属性的后缀
+#      suffix: )
+
+jasypt:
+  encryptor:
+    # 指定加解密在spring ioc容器中bean的名称，默认 jasyptStringEncryptor
+    bean: myStringEncryptor
+    # 盐值
+    password: 123456
+
+#Jasypt默认加解密器beanName为jasyptStringEncryptor，如果不想在配置文件中指定自定义加密器名称，需将自定义加密器beanName设置为jasyptStringEncryptor，否则将不生效。
+#加密盐值通过环境变量指定
+#  方式一：直接作为程序启动时的命令行参数
+#  java -jar app.jar --jasypt.encryptor.password=salt
+#  方式二：直接作为程序启动时的应用环境变量
+#  java -Djasypt.encryptor.password=salt -jar app.jar
+#  方式三：直接作为系统环境变量
+#  # 1. 设置系统环境变量 JASYPT_ENCRYPTOR_PASSWORD = salt
+#
+#  # 2. Spring Boot的项目配置文件指定系统环境变量：
+#  jasypt.encryptor.password=${JASYPT_ENCRYPTOR_PASSWORD:}
